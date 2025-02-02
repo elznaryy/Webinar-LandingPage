@@ -209,10 +209,12 @@ export function RegisterDialog({ children }: { children: React.ReactNode }) {
                     <div className="space-y-4">
                       <Button
                         type="submit"
-                        className="w-full bg-sky-500 hover:bg-sky-600 transition-all h-20 rounded-xl shadow-xl hover:shadow-2xl scale-100 hover:scale-105 transform duration-300 max-w-[340px] mx-auto"
+                        name="register_submit"
+                        id="register_submit"
+                        className="w-full bg-sky-500 hover:bg-sky-600 transition-all h-20 rounded-xl shadow-xl hover:shadow-2xl scale-100 hover:scale-105 transform duration-300 max-w-[340px] mx-auto register-submit-button"
                       >
                         <span className="text-white font-bold text-2xl flex items-center justify-center gap-4">
-                          Watch Webinar NOW! <ChevronRight className="h-8 w-8 stroke-[3]" />
+                          Submit <ChevronRight className="h-8 w-8 stroke-[3]" />
                         </span>
                       </Button>
 
