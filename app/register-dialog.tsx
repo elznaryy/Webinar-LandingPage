@@ -8,12 +8,18 @@ import { Label } from "@/components/ui/label"
 import { submitRegistration } from "./actions"
 import { useFormState } from "react-dom"
 import { motion, AnimatePresence } from "framer-motion"
-import { Sparkles, ChevronRight, CheckCircle2 } from "lucide-react"
+import { ChevronRight, CheckCircle2 } from "lucide-react"
 import { z } from "zod"
 
-const initialState = {
+// Define FormState interface inline
+interface FormState {
+  message: string;
+  success: boolean;
+}
+
+const initialState: FormState = {
   message: "",
-  success: false,
+  success: false
 }
 
 // Update validation schema
@@ -26,7 +32,7 @@ const formSchema = z.object({
 
 export function RegisterDialog({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false)
-  const [state, formAction] = useFormState(submitRegistration, initialState)
+  const [state, formAction] = useFormState<FormState, FormData>(submitRegistration, initialState)
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
 
   useEffect(() => {

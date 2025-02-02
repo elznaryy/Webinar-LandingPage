@@ -1,6 +1,13 @@
 "use server"
 
-export async function submitRegistration(prevState: any, formData: FormData) {
+// Define the FormState type inline since we removed types.ts
+interface FormState {
+  message: string;
+  success: boolean;
+}
+
+// Remove the import and update the function signature
+export async function submitRegistration(prevState: FormState, formData: FormData): Promise<FormState> {
   try {
     // Format the data
     const data = {
@@ -12,7 +19,7 @@ export async function submitRegistration(prevState: any, formData: FormData) {
       source: "Masterclass Landing Page"
     }
 
-    // Send to webhook - Replace this URL with your actual webhook URL
+    // Send to webhook
     const response = await fetch("https://hook.eu2.make.com/od8xr168912isc872vnzp132nkjp337g", {
       method: "POST",
       headers: {
@@ -28,7 +35,6 @@ export async function submitRegistration(prevState: any, formData: FormData) {
       throw new Error("Failed to submit registration")
     }
 
-    // Return success message
     return {
       message: "Registration successful! Check your email for details.",
       success: true,
@@ -38,7 +44,7 @@ export async function submitRegistration(prevState: any, formData: FormData) {
     console.error("Registration error:", error)
     return {
       message: "Something went wrong. Please try again.",
-      success: false,
+      success: false
     }
   }
 }
