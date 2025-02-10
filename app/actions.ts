@@ -1,12 +1,10 @@
 "use server"
 
-// Define the FormState type inline since we removed types.ts
 interface FormState {
   message: string;
   success: boolean;
 }
 
-// Remove the import and update the function signature
 export async function submitRegistration(prevState: FormState, formData: FormData): Promise<FormState> {
   try {
     // Format the data
@@ -19,8 +17,8 @@ export async function submitRegistration(prevState: FormState, formData: FormDat
       source: "Masterclass Landing Page"
     }
 
-    // Send to webhook
-    const response = await fetch("https://hook.eu2.make.com/od8xr168912isc872vnzp132nkjp337g", {
+    // Send to new Zoho webhook
+    const response = await fetch("https://flow.zoho.com/849281392/flow/webhook/incoming?zapikey=1001.99187d2b111cf0eb8628712cc2526696.4be8142b33a40d4db127b8754e4f5c12&isdebug=false", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
